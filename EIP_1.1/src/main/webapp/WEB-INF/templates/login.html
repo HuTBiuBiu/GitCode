@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>登录</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" th:href="@{/static/assets/css/main.css}" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+			<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div style="width:550px" class="container">
+						<form th:action="@{/home}" method="post">
+							<input type="text" name="username" placeholder="请输入用户名"><br/>
+							<input type="password" name="password" placeholder="请输入密码"><br/>
+							<button class="button primary fit" type="submit">登录</button>
+							<a th:href="@{/reg}">还没账号？点我注册吧！</a>
+						</form>
+						<p th:text="${session.loginmsg}"></p>
+					</div>
+				</div>
+		</div>
+	</body>>
+</html>

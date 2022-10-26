@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射目标全类名-->
+<mapper namespace="com.cxg.eip.model.mapper.UserMapper">
+    <!--public User getUser(@Param("username") String username,@Param("password") String password);-->
+    <select id="getUser" resultType="user">
+        select * from users where username=#{username} and password=#{password}
+    </select>
+    <!--public List<User> getUsers();-->
+    <select id="getUsers" resultType="user">
+        select * from users
+    </select>
+    <!--public boolean addUser(User user);-->
+    <insert id="addUser">
+        insert into users (username,password,name,position,privilege,email)
+        values (#{username},#{password},#{name},#{position},#{privilege},#{email})
+    </insert>
+</mapper>

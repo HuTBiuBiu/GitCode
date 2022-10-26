@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射目标全类名-->
+<mapper namespace="com.cxg.eip.model.mapper.BookMapper">
+    <!--List<Book> getBooks();-->
+    <select id="getBooks" resultType="book">
+        select * from books
+    </select>
+    <!--void addBook(String bookName);-->
+    <insert id="addBook">
+        insert into books (book_name) values (#{bookName})
+    </insert>
+</mapper>

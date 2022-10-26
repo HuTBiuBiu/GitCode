@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>建议详情</title>
+</head>
+<body>
+    <table>
+        <th>
+            <td>
+                <span th:each="suggList,index :${suggestionList}">
+                    <span th:if="${index.count}==1" th:text="${suggList.sHead}"></span>
+                </span>
+            </td>
+        </th>
+        <tr th:each="suggList :${suggestionList}">
+            <td th:text="${suggList.suggestContent}"></td>
+            <td th:text="${suggList.deficiency}"></td>
+            <td th:text="${suggList.effect}"></td>
+            <td><button th:href="@{/}" th:value="${suggList.sCount}"></button></td>
+        </tr>
+    </table>
+</body>
+</html>

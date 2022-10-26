@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射目标全类名-->
+<mapper namespace="com.cxg.eip.model.mapper.SuggestionMapper">
+    <!--public List<Suggestion> getSuggestions();-->
+    <select id="getSuggestions" resultType="suggestion">
+        select * from suggestions
+    </select>
+    <!--public Suggestion getById();-->
+    <select id="getById" resultType="suggestion">
+        select * from suggestions where id=#{id}
+    </select>
+    <!-- void getByHeadAndName( @Param("head") String head,  @Param("name") String name);-->
+    <select id="getByHeadAndName" resultType="suggestionList">
+        select * from sugg_list where s_head=#{head} and user_name=#{name}
+    </select>
+    <!--    public boolean addSuggestion(String head);-->
+    <insert id="addSuggestion">
+        insert into sugg_list (suggest_content,deficiency,effect,user_name,s_head)
+        values (#{suggestContent},#{deficiency},#{effect},#{userName},#{sHead})
+    </insert>
+    <!--List<SuggestionList> getSuggestionList(String head);-->
+    <select id="getSuggestionList" resultType="suggestionList">
+        select * from sugg_list where s_head = #{sHead}
+    </select>
+    <!--void newSuggestion(String head, String date);-->
+    <insert id="newSuggestion">
+        insert into suggestions (head,date) values (#{head},#{date})
+    </insert>
+</mapper>

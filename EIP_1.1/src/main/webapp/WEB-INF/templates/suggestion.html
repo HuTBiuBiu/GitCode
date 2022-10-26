@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>合理化建议</title>
+</head>
+<body>
+
+    <form th:action="@{'/sgg/'+${suggestion.head}}" method="post">
+        标题:<span th:text="${suggestion.head}"></span>
+        <br>
+    建议内容:<textarea name="suggestContent" cols="20" row="20"></textarea><br>
+    目前缺失:<textarea name="deficiency" cols="20" row="20"></textarea><br>
+    预计效果:<textarea name="effect" cols="20" row="20"></textarea><br>
+    <button type="submit">发表</button>
+  </form>
+</body>
+</html>

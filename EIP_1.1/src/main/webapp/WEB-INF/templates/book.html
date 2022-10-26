@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书借阅</title>
+    <link rel="stylesheet" th:href="@{/static/assets/css/main.css}" />
+    <noscript><link rel="stylesheet" th:href="@{/static/assets/css/noscript.css}" /></noscript>
+</head>
+<body class="is-preload">
+<div id="page-wrapper">
+    <!-- Header -->
+    <header id="header">
+        <h1 id="logo"><a th:href="@{/index}">主页</a></h1>
+        <nav id="nav">
+            <ul>
+                <li th:if="${session.user!=null&&session.user.getPrivilege()ne'3'}"><a th:href="@{/suggNew}">发布建议</a></li>
+                <li th:if="${session.user!=null&&session.user.getPrivilege()ne'3'}"><a th:href="@{/index}">员工管理</a></li>
+                <li th:if="${session.user!=null&&session.user.getPrivilege()ne'3'}"><a th:href="@{/index}">发布公告</a></li>
+                <li th:if="${session.user!=null}"><a th:href="@{/book}">图书借览</a></li>
+                <li th:if="${session.user==null}"><a th:href="@{/login}" class="button primary">登录</a></li>
+                <li th:if="${session.user!=null}">
+                    <a th:text="${session.user.name}" class="button primary"></a>
+                    <ul>
+                        <li><a th:href="@{/index}">个人</a></li>
+                        <li><a th:href="@{/index}">工作日记</a></li>
+                        <li><a th:href="@{/index}">个人信箱</a></li>
+                        <li><a th:href="@{/exit}">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <div>
+        <div>
+            <header>
+                <form action="/bookUp" method="post" enctype="multipart/form-data">
+                    <input type="file" name="book">
+                    <button type="submit">上传</button>
+                </form>
+                <ul style="list-style: none">
+                    <li th:each="book : ${books}" >
+                        <a th:href="@{'/bookDown/'+${book.bookName}}" th:text="${book.bookName}"></a>
+                    </li>
+                </ul>
+            </header>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+            <li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </footer>
+</div>
+<!-- Scripts -->
+<script th:src="@{/static/assets/js/jquery.min.js}"></script>
+<script th:src="@{/static/assets/js/jquery.scrolly.min.js}"></script>
+<script th:src="@{/static/assets/js/jquery.dropotron.min.js}"></script>
+<script th:src="@{/static/assets/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/static/assets/js/browser.min.js}"></script>
+<script th:src="@{/static/assets/js/breakpoints.min.js}"></script>
+<script th:src="@{/static/assets/js/util.js}"></script>
+<script th:src="@{/static/assets/js/main.js}"></script>
+
+</body>
+</html>
